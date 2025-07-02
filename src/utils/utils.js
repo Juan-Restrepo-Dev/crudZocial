@@ -37,7 +37,7 @@
 //      container.textContent = " ocurrio un error al cargar el modulo"
 //     }
 // }
-function loadModule(route) {
+export function loadModule(route) {
   const modules = {
     "/dashboard": async () => {
       const data = await fetch("/api/dashboard").then((res) => res.json());

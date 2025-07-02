@@ -1,3 +1,13 @@
+import {loadModule} from "../utils/utils.js"
+
+const views = {
+  "/": () => import('./views/home.js'),
+  "/gallery": () => import('./views/about.js'),
+  "/profile": () => import('./views/contact.js'),
+  "/notes": () => import('./views/notes.js'),
+  "/login": () => import('./views/login.js'),
+  "/register": () => import('./views/register.js'),
+}
 const middlewares = [logMiddleware, sessionMiddleware, authGuard];
 
 function composeAsync(middlewares) {
@@ -49,14 +59,6 @@ function renderSmart(req) {
     renderDynamic(req);
   }
 }
-
-function handleRouteChange() {
-  const route = location.hash.slice(1) || "/";
-  const req = { route };
-  const res = {};
-  composeAsync(middlewares)(req, res);
-}
-
 function showSpinner() {
   document.getElementById("spinner").style.display = "block";
 }
@@ -65,5 +67,11 @@ function hideSpinner() {
   document.getElementById("spinner").style.display = "none";
 }
 
-window.addEventListener("hashchange", handleRouteChange);
-window.addEventListener("DOMContentLoaded", handleRouteChange);
+export function handleRouteChange() {
+  const route = location.hash.slice(1) || "/";
+  const req = { route };
+  const res = {};
+  composeAsync(middlewares)(req, res);
+}
+
+
