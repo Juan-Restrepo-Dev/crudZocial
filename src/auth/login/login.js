@@ -33,6 +33,17 @@ const defaultUsers = [
         phone: "1123456789",
         age: 19,
         role: "user"
+    },
+    {
+        email: "admin@email.com",
+        password: "4321",
+        firstName: "altrufio",
+        lastName: "mogollon",
+        country: "peru",
+        city: "Cusco",
+        phone: "1111111",
+        age: 27,
+        role: "admin"
     }
 ];
 
