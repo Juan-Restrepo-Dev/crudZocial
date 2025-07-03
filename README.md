@@ -3,27 +3,27 @@ Usuarios
 Sistema que permite el registro, autenticación y gestión de información para múltiples usuarios. Cada usuario puede crear, editar y eliminar sus notas e imágenes personales. 
 La navegación entre páginas protegidas requiere que el usuario haya iniciado sesión.
 
-Imágenes
+Imágenes:
 Los usuarios tienen acceso a una página donde pueden ver sus imágenes almacenadas. No se permite acceder a esta sección sin haber iniciado sesión previamente.
 
-Notas
+Notas:
 Cada usuario puede crear y administrar sus notas personales. Se permite:
 - Crear nuevas notas.
 - Editar notas existentes.
 - Eliminar notas propias.
 
-Perfil de Usuario
+Perfil de Usuario:
 En la sección de perfil, los usuarios pueden:
 - Ver y actualizar su información personal: nombre, hito, email, teléfono, país, ciudad y dirección.
 - Cerrar sesión desde esta sección.
 
-Logs
+Logs:
 El sistema genera registros automáticos (logs) para cada acción relevante, tales como:
 - ID
 - Accion
 - Fecha
 
-Azure DevOps
+Azure DevOps:
 El proyecto debe registrarse en Azure DevOps con seguimiento de:
 - Usuarios (login, registro)
 - Notas e imágenes
