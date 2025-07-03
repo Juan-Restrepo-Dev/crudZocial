@@ -39,9 +39,9 @@ Estructura del Proyecto
 
 Celula DeepBlue
 Integrantes:
-Isabella Pulgarín Muñoz
-David Palacios Padilla
-Juan Jose Restrepo Osorio
-Jefferson Giraldo Posada
+- Isabella Pulgarín Muñoz
+- David Palacios Padilla
+- Juan Jose Restrepo Osorio
+- Jefferson Giraldo Posada
 
   
