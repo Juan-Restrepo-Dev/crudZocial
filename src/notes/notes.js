@@ -23,13 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     inputNote.value = "";
 
     const action = buttonKeep.dataset.action;
-    const date = new Date().toLocaleString();
-
-    const history = JSON.parse(localStorage.getItem("Action")) || [];
-    history.push({action:action,date});
-
-    localStorage.setItem("Action",JSON.stringify(history));
-
+    RegisterAction(action);
+        
     });
 
     function createNote(text, index) {
@@ -56,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("notes", JSON.stringify(notes));
         containerNotes.innerHTML = "";
         notes.forEach((n, idx) => createNote(n, idx));
+        RegisterAction("Delete note");
     });
 
     col.querySelector(".btn-editar").addEventListener("click", (e) => {
@@ -68,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             containerNotes.innerHTML = "";
             notes.forEach((n, idx) => createNote(n, idx));
         }
+        RegisterAction("Update note");
     });
     }
 });
