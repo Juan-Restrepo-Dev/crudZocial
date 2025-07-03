@@ -63,13 +63,13 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        sessionStorage.setItem('activeUser', JSON.stringify(user));
-        window.location.href = "home.html";
+        sessionStorage.setItem('userlog', JSON.stringify(user));
+        window.location.href = "index.html";
     } else {
         document.getElementById('loginError').textContent = "Correo o Contraseña incorrecta.";
     }
 });
 
 document.getElementById('registerBton').addEventListener('click', () => {
-    window.location.href = "register.html";
+    window.location.href = "../register/register.html";
 });
