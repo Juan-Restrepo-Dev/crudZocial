@@ -1,35 +1,32 @@
 
 const inputUrl = document.getElementById('imageUrl');
-const btnAgregar = document.getElementById('btnAgregar');
-const galeria = document.getElementById('galeria');
+const btnAdd = document.getElementById('btnAdd');
+const gallery = document.getElementById('gallery');
 
-// Cargar imágenes desde localStorage al iniciar
 document.addEventListener('DOMContentLoaded', () => {
-  const fotosGuardadas = JSON.parse(localStorage.getItem('fotos')) || [];
-  fotosGuardadas.forEach(url => crearTarjeta(url));
+  const savedPhotos = JSON.parse(localStorage.getItem('photos')) || [];
+  savedPhotos.forEach(url => createCard(url));
 });
 
-// Agregar evento al botón
-btnAgregar.addEventListener('click', () => {
+btnAdd.addEventListener('click', () => {
   const url = inputUrl.value.trim();
   if (!url) return;
 
-  crearTarjeta(url);
-  guardarFoto(url);
+  createCard(url);
+  photoSaved(url);
   inputUrl.value = '';
 });
 
-// Delegar el evento de eliminar a la galería
-galeria.addEventListener('click', (e) => {
+gallery.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn-eliminar')) {
     const col = e.target.closest('.col-md-4');
     const url = col.getAttribute('data-url');
-    eliminarFoto(url);
+    photoDelete(url);
     col.remove();
   }
 });
 
-function crearTarjeta(url) {
+function createCard(url) {
   const col = document.createElement('div');
   col.className = 'col-md-4 mb-4';
   col.setAttribute('data-url', url);
@@ -42,17 +39,17 @@ function crearTarjeta(url) {
     </div>
   `;
 
-  galeria.appendChild(col);
+  gallery.appendChild(col);
 } 
 
-function guardarFoto(url) {
-  const fotos = JSON.parse(localStorage.getItem('fotos')) || [];
-  fotos.push(url);
-  localStorage.setItem('fotos', JSON.stringify(fotos));
+function photoSaved(url) {
+  const photos = JSON.parse(localStorage.getItem('photos')) || [];
+  photos.push(url);
+  localStorage.setItem('photos', JSON.stringify(photos));
 }
 
-function eliminarFoto(url) {
-  const fotos = JSON.parse(localStorage.getItem('fotos')) || [];
-  const nuevasFotos = fotos.filter(foto => foto !== url);
-  localStorage.setItem('fotos', JSON.stringify(nuevasFotos));
+function photoDelete(url) {
+  const photos = JSON.parse(localStorage.getItem('photos')) || [];
+  const newPhoto = photos.filter(foto => foto !== url);
+  localStorage.setItem('photos', JSON.stringify(newPhoto));
 }
