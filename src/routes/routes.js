@@ -1,13 +1,6 @@
 import {loadModule} from "../utils/utils.js"
+import  * as middleWarares from "../guard/guard.js"
 
-const views = {
-  "/": () => import('./views/home.js'),
-  "/gallery": () => import('./views/about.js'),
-  "/profile": () => import('./views/contact.js'),
-  "/notes": () => import('./views/notes.js'),
-  "/login": () => import('./views/login.js'),
-  "/register": () => import('./views/register.js'),
-}
 const middlewares = [logMiddleware, sessionMiddleware, authGuard];
 
 function composeAsync(middlewares) {
@@ -23,42 +16,15 @@ function composeAsync(middlewares) {
       });
     }
     hideSpinner();
-    renderSmart(req);
+    render(req);
   };
 }
 
-function renderStatic(req) {
-  const app = document.getElementById("app");
-  app.innerHTML = views[req.route]?.() || "<h1>404</h1>";
-
-  if (req.route === "/login") {
-    document.getElementById("login-btn")?.addEventListener("click", () => {
-      sessionStorage.setItem("usuario", JSON.stringify({ role: "admin" }));
-      location.hash = "#/admin";
-    });
-  }
+function render(req) {
+  loadModule(req.route);
 }
 
-function renderDynamic(req) {
-  const app = document.getElementById("app");
-  const module = loadModule(req.route);
 
-  if (typeof module === "function") {
-    module().then((content) => {
-      app.innerHTML = content;
-    });
-  } else {
-    app.innerHTML = module();
-  }
-}
-
-function renderSmart(req) {
-  if (views[req.route]) {
-    renderStatic(req);
-  } else {
-    renderDynamic(req);
-  }
-}
 function showSpinner() {
   document.getElementById("spinner").style.display = "block";
 }

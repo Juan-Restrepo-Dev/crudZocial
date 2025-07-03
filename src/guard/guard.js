@@ -20,7 +20,7 @@ function logoutMiddleware(req, res, next) {
 function authGuard(req, res, next) {
   const rolesPermitidos = {
     "/admin": ["admin"],
-    "/dashboard": ["admin", "editor"],
+    "/dashboard": ["admin", "user"],
   };
   const rolesRuta = rolesPermitidos[req.route] || [];
 
