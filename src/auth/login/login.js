@@ -63,8 +63,8 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        sessionStorage.setItem('userlog', JSON.stringify(user));
-        window.location.href = "index.html";
+        sessionStorage.setItem('userLog', JSON.stringify(user));
+        window.location.href = "/";
     } else {
         document.getElementById('loginError').textContent = "Correo o Contraseña incorrecta.";
     }

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded",()=>{
+
 
     const tables = document.getElementById("contenido")
 
@@ -18,4 +18,4 @@ document.addEventListener("DOMContentLoaded",()=>{
         tables.appendChild(fila);
     });
 
-});
+

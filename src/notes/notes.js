@@ -1,5 +1,5 @@
 //Esperar que cargue el DOM para no tener interrupciones correctamente
-document.addEventListener("DOMContentLoaded", () => {
+import { RegisterAction } from "../utils/utils.js";
 
     // llamar los elementos de HTML por medio del ID
     const buttonKeep = document.getElementById("buttonKeep");
@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     buttonKeep.addEventListener("click", () => {
+    console.log("Button clicked");
+        
     let text = inputNote.value.trim();
     if (text === "") return;
 
@@ -67,4 +69,4 @@ document.addEventListener("DOMContentLoaded", () => {
         RegisterAction("Update note");
     });
     }
-});
+

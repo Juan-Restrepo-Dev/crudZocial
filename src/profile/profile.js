@@ -1,5 +1,4 @@
-
-const activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
+const activeUser = JSON.parse(sessionStorage.getItem('userLog'));
 
 document.getElementById('email').value = activeUser.email;
 document.getElementById('firstName').value = activeUser.firstName;
@@ -25,10 +24,9 @@ document.querySelector('form').addEventListener('submit', function (e) {
     codigo: document.getElementById('codigo').value
   };
 
-  localStorage.setItem('activeUser', JSON.stringify(updatedUser));
-  sessionStorage.setItem('activeUser', JSON.stringify(updatedUser));
+  localStorage.setItem('userLog', JSON.stringify(updatedUser));
+  sessionStorage.setItem('userLog', JSON.stringify(updatedUser));
 
   alert('Información actualizada correctamente');
 });
-
 
